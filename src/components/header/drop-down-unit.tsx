@@ -1,15 +1,17 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useIndicatorStore } from '@/stores/indicator-store-provider';
 interface Props {
   unit: string;
 }
 
 export const DropDownUnit = ({unit}: Props) => {
 
-  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const store = useIndicatorStore((state)=> state);
+
+  const isSelected = store.unit === unit;
 
   const handleClick = () => {
-    setIsSelected(!isSelected);
+    store.toggleUnit();
   }
 
   return (
