@@ -8,7 +8,6 @@ export const UnitsButton = () => {
   const [isOpen, SetIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
-    console.log('Click')
     SetIsOpen(!isOpen);
   }
 
