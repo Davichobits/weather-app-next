@@ -1,17 +1,36 @@
 import Image from 'next/image';
 import { useIndicatorStore } from '@/stores/indicator-store-provider';
+import { UnitTemperature, UnitWindSpeed, UnitPrecipitation, Indicator } from '@/types/types';
 interface Props {
   unit: string;
+  indicator: Indicator
 }
 
-export const DropDownUnit = ({unit}: Props) => {
+export const DropDownUnit = ({unit, indicator}: Props) => {
 
   const store = useIndicatorStore((state)=> state);
 
-  const isSelected = store.unit === unit;
+  let indicatorUnit: UnitTemperature | UnitWindSpeed | UnitPrecipitation
+
+  if(indicator === 'Temperature'){
+    indicatorUnit = store.temperatureUnit;
+  }else if(indicator === 'Wind Speed'){
+    indicatorUnit = store.windSpeedUnit
+  }else{
+    indicatorUnit = store.precipitationUnit
+  }
+
+  const isSelected = indicatorUnit === unit;
 
   const handleClick = () => {
-    store.toggleUnit();
+    if(indicator === 'Temperature'){
+      store.toggleTemperatureUnit();
+    }else if(indicator === 'Wind Speed'){
+      store.toggleWindSpeedUnit();
+    }else{
+      store.togglePrecipitationUnit();
+    }
+    
   }
 
   return (

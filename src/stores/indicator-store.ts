@@ -1,32 +1,48 @@
 import { createStore } from 'zustand';
-import { UnitTemperature } from '@/types/types';
+import { UnitTemperature, UnitWindSpeed, UnitPrecipitation } from '@/types/types';
 
 
 export type IndicatorState = {
-  unit: UnitTemperature;
+  temperatureUnit: UnitTemperature;
+  windSpeedUnit: UnitWindSpeed;
+  precipitationUnit: UnitPrecipitation;
 }
 
 export type IndicatorActions = {
-  toggleUnit: () => void;
+  toggleTemperatureUnit: () => void;
+  toggleWindSpeedUnit: ()=> void;
+  togglePrecipitationUnit: ()=> void;
 }
 
 export type IndicatorStore = IndicatorState & IndicatorActions;
 
 export const initIndicatorStore = (): IndicatorState => {
-  return { unit: 'Celsius (°C)' }
+  return { 
+    temperatureUnit: 'Celsius (°C)',
+    windSpeedUnit: 'km/h',
+    precipitationUnit: 'Millimeters (mm)'
+  }
 }
 
 
 export const defaultInitState: IndicatorState = {
-  unit: 'Celsius (°C)',
+  temperatureUnit: 'Celsius (°C)',
+  windSpeedUnit: 'km/h',
+  precipitationUnit: 'Millimeters (mm)'
 }
 
 export const createIndicatorStore = (initState: IndicatorState = defaultInitState) => {
   
   return createStore<IndicatorStore>()((set)=>({
     ...initState,
-    toggleUnit: ()=>set((state)=>({
-      unit: state.unit === 'Celsius (°C)' ? 'Fahrenheit (°F)' : 'Celsius (°C)',
+    toggleTemperatureUnit: ()=>set((state)=>({
+      temperatureUnit: state.temperatureUnit === 'Celsius (°C)' ? 'Fahrenheit (°F)' : 'Celsius (°C)',
     })),
+    toggleWindSpeedUnit: ()=>set((state)=>({
+      windSpeedUnit: state.windSpeedUnit === 'km/h' ? 'mph' : 'km/h',
+    })),
+    togglePrecipitationUnit: ()=>set((state)=>({
+      precipitationUnit: state.precipitationUnit === 'Inches (in)' ? 'Millimeters (mm)' : 'Inches (in)'
+    }))
   }))
 } 

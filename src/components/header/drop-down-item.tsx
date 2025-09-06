@@ -9,7 +9,7 @@ export const DropDownItem = ({indicator, units}: DropDownOptions) => {
       <h2 className='text-Neutral-300 text-sm text-left px-2 py-1.5'>{indicator}</h2>
       <div className='flex flex-col gap-1 mb-1'>
         {
-          units.map((unit)=> <DropDownUnit key={unit} unit={unit} /> )
+          units.map((unit)=> <DropDownUnit key={unit} indicator={indicator} unit={unit} /> )
         }
       </div>
     </div>
