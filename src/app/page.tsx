@@ -1,5 +1,11 @@
-import { Header, Hero, Search } from '@/components';
+import { 
+  Header, 
+  Hero, 
+  Search,
+  WeatherInfo,
+} from '@/components';
 import { IndicatorStoreProvider } from '@/stores/indicator-store-provider';
+
 export default function Home() {
   return (
         <IndicatorStoreProvider>
@@ -7,6 +13,7 @@ export default function Home() {
         <Header />
         <Hero />
         <Search />
+        <WeatherInfo />
       </div>
       </IndicatorStoreProvider>
   );
