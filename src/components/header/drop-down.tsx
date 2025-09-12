@@ -33,7 +33,7 @@ export const DropDown = () => {
         onClick={store.toggleMetricSystem}
         className='p-2 h-[39px] hover:bg-Neutral-700 rounded-lg cursor-pointer transition-colors'
       >
-        Switch to {capitalize(store.metricSystem)}
+        Switch to {capitalize(store.metricSystem === 'imperial' ? 'metric' : 'imperial')}
       </button>
       {
         dropDownOptions.map((option)=><DropDownItem key={option.indicator} {...option} />)

@@ -6,7 +6,6 @@ import {
   MetricSystem
 } from '@/types/types';
 
-
 export type IndicatorState = {
   temperatureUnit: UnitTemperature;
   windSpeedUnit: UnitWindSpeed;
@@ -32,7 +31,6 @@ export const initIndicatorStore = (): IndicatorState => {
   }
 }
 
-
 export const defaultInitState: IndicatorState = {
   temperatureUnit: 'Celsius (°C)',
   windSpeedUnit: 'km/h',
@@ -40,24 +38,70 @@ export const defaultInitState: IndicatorState = {
   metricSystem: 'metric',
 }
 
+const getSystemFromUnits = (
+  temperatureUnit: UnitTemperature,
+  windSpeedUnit: UnitWindSpeed,
+  precipitationUnit: UnitPrecipitation
+): MetricSystem => {
+  if (
+    temperatureUnit === 'Celsius (°C)' &&
+    windSpeedUnit === 'km/h' &&
+    precipitationUnit === 'Millimeters (mm)'
+  ) {
+    return 'metric';
+  }
+
+  if (
+    temperatureUnit === 'Fahrenheit (°F)' &&
+    windSpeedUnit === 'mph' &&
+    precipitationUnit === 'Inches (in)'
+  ) {
+    return 'imperial';
+  }
+
+  return 'metric';
+}
+
 export const createIndicatorStore = (initState: IndicatorState = defaultInitState) => {
   
   return createStore<IndicatorStore>()((set)=>({
     ...initState,
-    toggleTemperatureUnit: ()=>set((state)=>({
-      temperatureUnit: state.temperatureUnit === 'Celsius (°C)' ? 'Fahrenheit (°F)' : 'Celsius (°C)',
-    })),
-    toggleWindSpeedUnit: ()=>set((state)=>({
-      windSpeedUnit: state.windSpeedUnit === 'km/h' ? 'mph' : 'km/h',
-    })),
-    togglePrecipitationUnit: ()=>set((state)=>({
-      precipitationUnit: state.precipitationUnit === 'Inches (in)' ? 'Millimeters (mm)' : 'Inches (in)'
-    })),
-    toggleMetricSystem: ()=>set((state)=>({
-      metricSystem: state.metricSystem === 'metric' ? 'imperial': 'metric',
-      temperatureUnit: state.metricSystem === 'metric' ? 'Celsius (°C)': 'Fahrenheit (°F)',
-      windSpeedUnit: state.metricSystem === 'metric' ? 'km/h': 'mph',
-      precipitationUnit: state.metricSystem === 'metric' ? 'Millimeters (mm)': 'Inches (in)',
-    }))
+    toggleTemperatureUnit: () =>
+      set((state) => {
+        const newTemp = state.temperatureUnit === 'Celsius (°C)' ? 'Fahrenheit (°F)' : 'Celsius (°C)';
+        return {
+          temperatureUnit: newTemp,
+          metricSystem: getSystemFromUnits(newTemp, state.windSpeedUnit, state.precipitationUnit),
+        };
+      }),
+
+    toggleWindSpeedUnit: () =>
+      set((state) => {
+        const newWind = state.windSpeedUnit === 'km/h' ? 'mph' : 'km/h';
+        return {
+          windSpeedUnit: newWind,
+          metricSystem: getSystemFromUnits(state.temperatureUnit, newWind, state.precipitationUnit),
+        };
+      }),
+
+    togglePrecipitationUnit: () =>
+      set((state) => {
+        const newPrecip = state.precipitationUnit === 'Inches (in)' ? 'Millimeters (mm)' : 'Inches (in)';
+        return {
+          precipitationUnit: newPrecip,
+          metricSystem: getSystemFromUnits(state.temperatureUnit, state.windSpeedUnit, newPrecip),
+        };
+      }),
+
+    toggleMetricSystem: () =>
+      set((state) => {
+        const newSystem = state.metricSystem === 'metric' ? 'imperial' : 'metric';
+        return {
+          metricSystem: newSystem,
+          temperatureUnit: newSystem === 'metric' ? 'Celsius (°C)' : 'Fahrenheit (°F)',
+          windSpeedUnit: newSystem === 'metric' ? 'km/h' : 'mph',
+          precipitationUnit: newSystem === 'metric' ? 'Millimeters (mm)' : 'Inches (in)',
+        };
+      }),
   }))
 } 
