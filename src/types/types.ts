@@ -24,3 +24,12 @@ export type DropDownOptions =
   | PrecipitationOptions
 
 export type MetricSystem = "imperial" | "metric"
+
+export type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun'; 
+
+export interface Forecast {
+  day: Day,
+  minTemp: number,
+  maxTemp: number,
+  iconUrl: string,
+}
