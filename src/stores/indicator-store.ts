@@ -54,7 +54,10 @@ export const createIndicatorStore = (initState: IndicatorState = defaultInitStat
       precipitationUnit: state.precipitationUnit === 'Inches (in)' ? 'Millimeters (mm)' : 'Inches (in)'
     })),
     toggleMetricSystem: ()=>set((state)=>({
-      metricSystem: state.metricSystem === 'imperial' ? 'metric': 'imperial',
+      metricSystem: state.metricSystem === 'metric' ? 'imperial': 'metric',
+      temperatureUnit: state.metricSystem === 'metric' ? 'Celsius (°C)': 'Fahrenheit (°F)',
+      windSpeedUnit: state.metricSystem === 'metric' ? 'km/h': 'mph',
+      precipitationUnit: state.metricSystem === 'metric' ? 'Millimeters (mm)': 'Inches (in)',
     }))
   }))
 } 
