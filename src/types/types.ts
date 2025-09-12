@@ -22,3 +22,5 @@ export type DropDownOptions =
   | TemperatureOptions
   | WindSpeedOptions
   | PrecipitationOptions
+
+export type MetricSystem = "imperial" | "metric"
