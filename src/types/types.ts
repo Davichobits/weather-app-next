@@ -33,3 +33,9 @@ export interface Forecast {
   maxTemp: number,
   iconUrl: string,
 }
+
+export interface WeatherCondition {
+  condition: string,
+  metric: number,
+  unit: string,
+}
