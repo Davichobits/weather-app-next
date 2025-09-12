@@ -1,18 +1,32 @@
 'use client';
 import Image from 'next/image';
 import { DropDown } from './drop-down';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export const UnitsButton = () => {
 
-  const [isOpen, SetIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
-    SetIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className='relative'>
+    <div ref={containerRef} className='relative'>
       <button
         onClick={handleClick}
         className={`flex justify-center gap-1.5 rounded-[6px] items-center  w-[89px] h-[33px] cursor-pointer ${isOpen ? 'bg-Neutral-700': 'bg-Neutral-800'} hover:bg-Neutral-700 transition-colors`}>
