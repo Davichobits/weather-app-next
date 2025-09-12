@@ -28,7 +28,7 @@ export const DropDown = () => {
   }
 
   return (
-    <div className='absolute top-[43px] right-0 w-[214px] bg-Neutral-800 border border-Neutral-600 rounded-xl px-2 py-1.5 flex flex-col'>
+    <div className='absolute top-[43px] right-0 w-[214px] bg-Neutral-800 border border-Neutral-600 rounded-xl px-2 py-1.5 flex flex-col z-10'>
       <button 
         onClick={store.toggleMetricSystem}
         className='p-2 h-[39px] hover:bg-Neutral-700 rounded-lg cursor-pointer transition-colors'
