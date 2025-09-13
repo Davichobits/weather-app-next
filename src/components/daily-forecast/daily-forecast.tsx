@@ -48,7 +48,7 @@ const dailyForecasts: Forecast[] = [
 
 export const DailyForecast = () => {
   return (
-    <div>
+    <div className='mb-8'>
       <h2 className='text-xl mb-5'>Daily forecast</h2>
       <div className='grid grid-cols-3 gap-4'>
         {

@@ -39,3 +39,5 @@ export interface WeatherCondition {
   metric: number,
   unit: string,
 }
+
+export type DaysDropdownOptions = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';

@@ -4,6 +4,7 @@ import {
   Search,
   WeatherInfo,
   DailyForecast,
+  HourlyForecast,
 } from '@/components';
 import { IndicatorStoreProvider } from '@/stores/indicator-store-provider';
 
@@ -16,6 +17,7 @@ export default function Home() {
         <Search />
         <WeatherInfo />
         <DailyForecast />
+        <HourlyForecast />
       </div>
       </IndicatorStoreProvider>
   );
