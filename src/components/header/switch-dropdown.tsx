@@ -41,6 +41,7 @@ export const UnitsButton = () => {
           width={9} 
           height={14} 
           alt='icon dropdown' 
+          className='size-auto'
           src='/images/icon-dropdown.svg' 
         />
       </button>

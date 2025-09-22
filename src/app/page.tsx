@@ -7,10 +7,12 @@ import {
   HourlyForecast,
 } from '@/components';
 import { IndicatorStoreProvider } from '@/stores/indicator-store-provider';
+import { CityStoreProvider } from '@/stores/city-store-provider';
 
 export default function Home() {
   return (
     <IndicatorStoreProvider>
+      <CityStoreProvider>
       <main className='m-4 md:min-w-[720px] md:max-w-[1216px] xl:max-w-[1216px]'>
         <Header />
         <Hero />
@@ -23,6 +25,7 @@ export default function Home() {
           <HourlyForecast />
         </div>
       </main>
+      </CityStoreProvider>
     </IndicatorStoreProvider>
   );
 }

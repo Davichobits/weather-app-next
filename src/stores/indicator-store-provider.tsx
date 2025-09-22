@@ -22,7 +22,9 @@ export interface IndicatorStoreProviderProps {
 export const IndicatorStoreProvider = ({
   children,
 }: IndicatorStoreProviderProps) => {
+
   const storeRef = useRef<IndicatorStoreApi | null>(null)
+  
   if (storeRef.current === null) {
     storeRef.current = createIndicatorStore(initIndicatorStore())
   }
