@@ -1,8 +1,8 @@
 import Image from 'next/image'
 export const Search = () => {
   return (
-    <form className='flex flex-col gap-3' action="">
-      <div className='relative'>
+    <form className='flex flex-col gap-3 md:flex-row' action="">
+      <div className='relative md:flex-1'>
         <Image className='absolute top-[18px] left-6' width={20} height={20} src='/images/icon-search.svg' alt='icon search' />
         <input className='bg-Neutral-800 py-4 pl-14 w-full rounded-xl' type="text" placeholder='Search for a place...' />
       </div>

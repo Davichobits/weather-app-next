@@ -11,7 +11,7 @@ import { IndicatorStoreProvider } from '@/stores/indicator-store-provider';
 export default function Home() {
   return (
     <IndicatorStoreProvider>
-      <div className='w-[343px] mt-4 mb-72'>
+      <div className='m-4 md:min-w-[720px]'>
         <Header />
         <Hero />
         <Search />
