@@ -1,4 +1,5 @@
 import { DaysDropdownButton } from './days-dropdown-button'
+import { DailyTemp } from './daily-temp'
 
 export const HourlyForecast = () => {
   return (
@@ -7,6 +8,7 @@ export const HourlyForecast = () => {
         <h2>Hourly forecast</h2>
         <DaysDropdownButton />
       </div>
+      <DailyTemp />
     </section>
   )
 }

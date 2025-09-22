@@ -7,10 +7,10 @@ const days: DaysDropdownOptions[] = [
 export const DaysDropDown = () => {
 
   return (
-    <div className='absolute top-[43px] right-0 w-[214px] bg-Neutral-800 border border-Neutral-600 rounded-xl px-2 py-1.5 flex flex-col z-10'>
+    <div className='absolute top-[43px] right-0 w-[214px] bg-Neutral-800 border border-Neutral-600 rounded-xl px-2 py-1.5 flex flex-col gap-1 z-10'>
       {
         days.map((day)=>(
-          <p key={day}>{day}</p>
+          <p className='hover:bg-Neutral-700 rounded-lg py-2.5 px-2 h-[39px] cursor-pointer transition-colors' key={day}>{day}</p>
         ))
       }
     </div>

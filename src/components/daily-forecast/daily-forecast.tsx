@@ -1,9 +1,10 @@
 import { ForecastCard } from './forecast-card'
 import { Forecast } from '@/types/types'
+import Image from 'next/image'
 
 const dailyForecasts: Forecast[] = [
   {
-    day: 'Tue',
+    day: 'Mon',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
@@ -15,31 +16,31 @@ const dailyForecasts: Forecast[] = [
     iconUrl: '/images/icon-snow.webp'
   },
   {
-    day: 'Tue',
+    day: 'Wed',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
   },
   {
-    day: 'Tue',
+    day: 'Thu',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
   },
   {
-    day: 'Tue',
+    day: 'Fri',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
   },
   {
-    day: 'Tue',
+    day: 'Sat',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
   },
   {
-    day: 'Tue',
+    day: 'Sun',
     minTemp: 68,
     maxTemp: 57,
     iconUrl: '/images/icon-snow.webp'
